@@ -3,7 +3,7 @@ podman run --rm -it -v %~dp0:/go/src/github.com/coredns/coredns -w /go/src/githu
 @if %errorlevel% neq 0 echo "Failed to build ARM64 coredns" && exit /b
 
 REM Build docker container image
-podman build --platform=arm64 -f Dockerfile -t coredns-blocklist .
+podman build --platform=arm64 --format docker -f Dockerfile -t coredns-blocklist .
 @if %errorlevel% neq 0 echo "Failed to build docker image" && exit /b
 
 REM Save built image
